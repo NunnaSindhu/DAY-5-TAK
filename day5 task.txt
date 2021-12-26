@@ -1,0 +1,312 @@
+                                                         DAY-5 TASK	
+1. Do the below programs in anonymous function & IIFE
+a.	Print odd numbers in an array
+b.	Convert all the strings to title caps in a string array
+c.	Sum of all numbers in an array
+d.	Return all the prime numbers in an array
+e.	Return all the palindromes in an array
+f.	Return median of two sorted arrays of same size
+g.	Remove duplicates from an array
+h.	Rotate an array by k times
+
+
+Question:1 a) Print odd numbers in an array
+
+Using anonymous function:
+const oddvalues=function (arr){
+    let odd=[];
+    for (let i in arr){
+        if(arr[i]%2!==0){
+                        odd.push(arr[i]);
+         }
+    }return odd;
+    
+}
+console.log(oddvalues([1,2,3,4,5,6,7,8,9]));
+
+Output: [1, 3, 5, 7, 9]
+
+Using IIFE function:
+(function (arr){
+    let odd=[];
+    for (let i in arr){
+        if(arr[i]%2!==0){
+                        odd.push(arr[i]);
+         }
+    }console.log(odd);
+    
+})([1,2,3,4,5,6,7,8,9]);
+
+Output: [1, 3, 5, 7, 9]
+
+Question:1b) Convert all the strings to title caps in a string array
+Using anonymous function:
+let titleCase= function (str){
+   str=str.toLowerCase().split(" ");
+    for (let i in str){
+        str[i]=str[i].charAt(0).toUpperCase()+str[i].slice(1);
+           } return str.join(" ");
+}
+console.log(titleCase("heLlo woRld"));
+Output: Hello World
+Using IIFE function:
+(function (str){
+   str=str.toLowerCase().split(" ");
+    for (let i in str){
+        str[i]=str[i].charAt(0).toUpperCase()+str[i].slice(1);
+           } console.log(str.join(" "));
+})("heLlo woRld");
+Output: Hello World
+
+Question: 1c) Sum of all numbers in an array
+Using IIFE function:
+(function (arr){
+   let sum=0;
+    for (let i in arr){
+        sum=sum+arr[i];
+           } console.log(sum);
+})([3,5,2,9,20]);
+Output:39
+Using anonymous function:
+const getsum=function (arr){
+   let sum=0;
+    for (let i in arr){
+        sum=sum+arr[i];
+           } return sum;
+}
+console.log(getsum([3,5,2,9,20]));
+
+Output:39
+
+Question:1d)Return all the prime numbers in an array
+
+let arr=[2,4,5,6,7,8,9];
+const isPrimenumbers= function (el){         
+            if (el<= 1) {
+             return false;
+           } 
+            for(let i=2;i<el;i++){
+                if((el%i==0)&&(el!==i))
+                {
+                    return false;
+               }
+           }  return true;        
+         }         
+const findprimenumbers=arr.filter((el)=>isPrimenumbers(el)); 
+console.log(findprimenumbers);
+Output:  [2, 5, 7]
+
+Question:1e) Return all the palindromes in an array
+Using anonymous function:
+
+const arr = ['sindhu', 2342, 12321, 'MOM', 'did'];
+const ispalindrome=function (el){
+    let str=String(el);
+    let i=0;
+    let j=str.length-1;
+    while(i<j){
+        if(str[i]==str[j]){
+            i++;
+            j--;
+        }
+        else{
+            return false;
+        }
+    }return true;
+}
+const findpalindrome= arr.filter(el=>ispalindrome(el));
+console.log(findpalindrome);
+
+Output:  [12321, 'MOM', 'did']
+
+Question:1 f) Return median of two sorted arrays of same size 
+const getmedian=function getMedian(ar1, ar2, n)
+{
+    var i = 0; 
+    var j = 0; 
+    var count;
+    var m1 = -1, m2 = -1;
+    
+    for (count = 0; count <= n; count++)
+    {
+        if (i == n)
+        {
+            m1 = m2;
+            m2 = ar2[0];
+            break;
+        }
+
+        else if (j == n)
+        {
+            m1 = m2;
+            m2 = ar1[0];
+            break;
+        }
+        
+        if (ar1[i] <= ar2[j])
+        {
+            m1 = m2; 
+            m2 = ar1[i];
+            i++;
+        }
+        else
+        {
+            m1 = m2; 
+            m2 = ar2[j];
+            j++;
+        }
+    }
+ 
+    return (m1 + m2)/2;
+}
+ 
+var ar1 = [1, 12, 15, 26, 38];
+var ar2 = [2, 13, 17, 30, 45];
+var n1 = ar1.length;
+var n2 = ar2.length;
+if (n1 == n2)
+    console.log(getmedian(ar1, ar2, n1)); 
+else
+console.log("Doesn't work for arrays of unequal size");
+ Output:16
+
+Question: 1g) Remove duplicates from an array
+Using IIFE function:Logic
+(function (arr,n)
+{
+    for(let i=0;i<n;i++)
+{
+    for(let j=0;j<n;j++)
+    {
+        if(i!=j){
+        if(arr[i]===arr[j])
+        arr.splice(i,1);
+        }       
+    }
+}console.log(arr);
+return;
+})([1,2,2,3,4],5);
+Output:[1, 2, 3, 4]
+Using anonymous function:
+const duplicatearray=function (arr,n)
+{
+    for(let i=0;i<n;i++)
+{
+    for(let j=0;j<n;j++)
+    {
+        if(i!=j){
+        if(arr[i]===arr[j])
+        arr.splice(i,1);
+        }       
+    }
+}console.log(arr);
+return;
+};
+
+duplicatearray([‘s’,2,2,3,’s’],5);
+
+Output: [2, 3, 's']
+
+Question: 1h) Rotate an array by k times
+Using anonymous function:
+
+const rotateArray1 = function(nums, k) {
+
+    for (let i = 0; i < k; i++) {
+        nums.unshift(nums.pop());
+    }
+  
+    return nums;
+  }
+console.log(rotateArray1([1,2,3,4],2));
+Output: [3, 4, 1, 2]
+Using IIFE function:Logic
+(function(nums, k) {
+
+    for (let i = 0; i < k; i++) {
+        nums.unshift(nums.pop());
+    }
+  console.log(nums);
+    
+  })([1,2,3,4],2);
+Output: [3, 4, 1, 2]
+3.	Do the below programs in arrow functions
+a.	Print odd numbers in an array
+b.	Convert all the strings to title caps in a string array
+c.	Sum of all numbers in an array
+d.	Return all the prime numbers in an array
+e.	Return all the palindromes in an array
+3.a) Print odd numbers in an array
+const oddvalues=(arr)=>{
+    let odd=[];
+    for (let i in arr){
+        if(arr[i]%2!==0){
+                        odd.push(arr[i]);
+         }
+    }return odd;
+    
+}
+console.log(oddvalues([1,2,3,4,5,6,7,8,9]));
+
+3.b) Convert all the strings to title caps in a string array
+const output= (str)=>{
+    str= str.toLowerCase().split(" ");
+    for(let i in str){
+        str[i]=str[i].charAt(0).toUpperCase() + str[i].slice(1);
+    }return str.join(" ");
+
+}
+console.log(output("heLlo wOrld"));
+Output: Hello World
+3.c) Sum of all numbers in an array
+const outputSum= (arr)=>{
+    let sum=0;
+    for(let i in arr){
+sum +=arr[i];
+    }return sum;
+
+    }
+
+console.log(outputSum([2,4,5,3,8,9]));
+Output: 31
+3.d) Return all the prime numbers in an array
+const arr=[1,2,3,4,5,6,7,8,9]
+const isprimenumber= (el)=>{
+            if(el<=1){
+            return false;
+        }
+        for(let i=2;i<el;i++){
+            if(el%i==0&&el!=i){
+                return false;
+            }
+        }return true;
+    }
+    
+const output= arr.filter((x)=>isprimenumber(x));
+console.log(output);
+Output:[2,3,5,7]
+3.e) Return all the palindromes in an array
+const arr=[121,'did','MOM',354,879,'CAR']
+const ispolindrome= (el)=>{
+           let str=String(el);
+            let i=0;
+            let j=str.length-1;
+            while(i<j){
+                if(str[i]===str[j]){
+                    i++;
+                    j--;
+                }
+                else{
+                    return false;
+                }
+               
+          }  return true;
+
+    }
+    
+const output= arr.filter((x)=>ispolindrome(x));
+console.log(output);
+
+Output: [121, 'did', 'MOM']
+
+
